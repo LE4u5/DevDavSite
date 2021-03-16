@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <title>DevDav</title>
+</head>
+
+<body>
+    <div class="bg_cont">
+        <div class="img_cont">
+            <img class="bg_img" src="./assets/img/codebg2.svg" alt="abstract_code">
+        </div>
+        <div class="bg_cont_ol"></div>
+    </div>
+    <div class="main_cont">
+        <navbar->
+            <a href="#home"><p>Home</p></a>
+            <a href="#projects">Projects<p></p></a>
+            <a href="#contact"><p>Contact</p></a>
+            <a class='download_link' href="./assets/files/resume.pdf"><p>Resume</p><i class="fas fa-file-download"></i></a>
+        </navbar->
+        <div class="home_cont" id="home">
+            <div class="main_text_cont">
+                <h1 class="">Welcome</h1>
+                <h1 class="">I'm Terrance Davenport</h1>
+                <p class="">I am a fullstack developer</p>
+                <div class="main_btn_cont">
+                    <button class="main_contact_btn">CONTACT</button>
+                    <a href="#projects"><button class="main_projects_btn">PROJECTS</button></a>
+                </div>
+            </div>
+        </div>
+        <div id="projects" class="projects_cont">
+            <div class="skills_cont">
+                <h1>Skills</h1>
+                <div class="skills_list_cont">
+                    <div class="list1">
+                        <p>HTML5</p>
+                        <p>CSS</p>
+                        <p>Javascript</p>
+                        <p>React</p>
+                    </div>
+                    <div class="list2">
+                        <p>NodeJs</p>
+                        <p>MongoDB</p>
+                        <p>C++</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="projects_ls_cont">
+                <h1>Projects</h1>
+                <div class="projects_ls">
+                    <project-card></project-card>
+                </div>
+            </div>
+        </div>
+        <div id="contact" class="contact_cont">
+            <h1>Contatct</h1>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+    <script src="./Components/ProjectCardWComponent.js"></script>
+    <script src="./Components/NavBarWComponent.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
+        integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>
+

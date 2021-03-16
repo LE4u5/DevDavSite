@@ -1,0 +1,133 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;    
+}
+
+h1{
+    font-family: 'Unispace', sans-serif;
+    font-size: 3rem;
+    color: white;
+}
+button:hover{
+    cursor: pointer;
+}
+body{
+    position: relative;
+    overflow-x: hidden;
+    background-color: black;
+}
+.img_cont{
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: right;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-right: 50px;
+    z-index: -1;
+}
+.bg_cont{
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-right: .12rem solid white;
+    margin-right: 2.5rem;
+}
+.bg_img{
+    height: 1125px;
+}
+.bg_cont_ol{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right, black,rgba(1,1,1,.7));
+    z-index: 1;
+}
+.main_cont{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+}
+.home_cont{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+.main_text_cont{
+    margin-left: 200px;
+}
+.main_text_cont h1{
+    margin-top: .7rem;
+}
+.main_text_cont p{
+    font-family: 'Montserat', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    color: #db6d00;
+}
+
+.main_text_cont button{
+    margin-top: 4rem;
+    margin-right: 2rem;
+    height: 2.2rem;
+    width: 8rem;
+    border: 2px solid white;
+    border-radius: 12px;
+    background-color: transparent;
+}
+.main_contact_btn{
+    color: #0baa84;
+}
+.main_projects_btn{
+    color: white;
+    background-color: #db6d00 !important;
+}
+.projects_cont{
+    min-height: 100vh;
+    width: 100vw;
+    padding-left: 200px;
+    padding-top: 100px;
+    margin-top: 100px;
+}
+.skills_list_cont{
+    display: flex;
+}
+.skills_cont p{
+    font-family: 'Montserat', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    color: #db6d00;
+}
+.skills_list_cont{
+    margin-top: 3rem;
+}
+.skills_cont .list1{
+    margin-right: 5rem;
+}
+.skills_cont p{
+    font-weight: 100;
+    margin-bottom: .5rem;
+    letter-spacing: .1rem;
+}
+.projects_ls_cont{
+    margin-top: 5rem;
+}
+.projects_ls{
+    margin-top: 3rem;
+}
+.contact_cont{
+    padding-left: 200px;
+    margin-top: 100px;
+    padding-top: 100px;
+    width: 100vw;
+    min-height: 100vh;
+}
