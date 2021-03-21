@@ -24,13 +24,13 @@ const proj_style = `
     width: calc(100% - 330px);
 }
 h2{
-    font-family: 'Unispace', sans-serif;
+    font-family: 'MyUnispace', sans-serif;
     color: white;
     font-size: 2.4rem;
     margin-bottom: 1rem;
 }
 h3{
-    font-family: 'Unispace', sans-serif;
+    font-family: 'MyUnispace', sans-serif;
     color: white;
     font-size: 1.5rem;
     margin-top: 2rem;

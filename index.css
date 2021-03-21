@@ -4,9 +4,13 @@
     box-sizing: border-box;
     color: white;    
 }
+@font-face{
+    font-family: 'MyUnispace';
+    src: url('./assets/fonts/unispace\ bd.ttf') format('truetype');
+}
 
 h1{
-    font-family: 'Unispace', sans-serif;
+    font-family: 'MyUnispace', sans-serif;
     font-size: 3rem;
     color: white;
 }
@@ -130,4 +134,16 @@ body{
     padding-top: 100px;
     width: 100vw;
     min-height: 100vh;
+}
+.contact_cont h1{
+    margin-bottom: 4rem;
+}
+.links_cont a{
+    color:#db6d00;
+}
+.links_cont p{
+    margin: 10px 0;
+}
+.links_cont{
+    margin-bottom: 3rem;
 }
