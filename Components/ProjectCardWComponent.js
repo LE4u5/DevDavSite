@@ -12,6 +12,7 @@ const proj_style = `
     border-radius: .8rem;
     padding: 24px;
     background-color: black;
+    margin-bottom: 3rem;
 }
 .proj_card_cont .img_cont{
     height: 320px;

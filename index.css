@@ -147,3 +147,42 @@ body{
 .links_cont{
     margin-bottom: 3rem;
 }
+.pg_ind{
+    position: fixed;
+    bottom: 80px;
+    transform: rotate(-90deg);
+    font-family: 'Montserat', sans-serif;
+    font-weight: 100;
+    letter-spacing: 6px;
+    font-size: 1.5rem;
+    width: 60px;
+    margin: 0;
+    padding: 0;
+}
+.home_ind{
+    right: -60px;
+}
+.projects_ind{
+    right: -60px;
+}
+.contact_ind{
+    right: -60px;
+}
+.pg_ind.active{
+    right: 32px !important;
+}
+
+navbar- a{
+    font-family: 'Montserat', sans-serif;
+    font-size: .9rem;
+    color: white;
+    text-decoration: none;
+    margin-right: 3rem;
+    display: flex;
+}
+navbar- i{
+    margin-left: .5rem;
+}
+navbar- .download_link{
+    margin-left: 8rem;
+}

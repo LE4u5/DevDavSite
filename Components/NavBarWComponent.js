@@ -20,25 +20,10 @@ const nav_style = `
     justify-content: right;
     align-items: center;
 }
-p{
-    
-}
-a{
-    font-family: 'Montserat', sans-serif;
-    font-size: .9rem;
-    color: white;
-    text-decoration: none;
-    margin-right: 3rem;
-    display: flex;
-}
-i{
-    margin-left: .5rem;
-}
-.download_link{
-    margin-left: 8rem;
-}
+
 </style>
 <div class='navbar_cont'>
+    <slot class='nav_content'></slot>
 </div>
 `
 class NavBarComponent extends HTMLElement{
@@ -49,7 +34,7 @@ class NavBarComponent extends HTMLElement{
 
         let shadow = this.attachShadow({mode: 'open'});
         shadow.appendChild(this.template.content.cloneNode(true));
-        shadow.querySelector('.navbar_cont').innerHTML = this.innerHTML;
+        shadow.querySelector('.nav_content').innerHTML = this.innerHTML;
     }
 }
 window.customElements.define('navbar-', NavBarComponent);

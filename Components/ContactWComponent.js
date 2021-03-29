@@ -73,7 +73,6 @@ class ContactComponent extends HTMLElement{
         this.template.innerHTML = contact_style;
         let shadow = this.attachShadow({mode:'open'});
         shadow.appendChild(this.template.content.cloneNode(true));
-        console.log = contact_style;
     }
 }
 window.customElements.define('contact-', ContactComponent);
