@@ -62,8 +62,8 @@ p{
         <div class='img_cont'>
         </div>
         <div class='info_cont'>
-            <h2>Name</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, quae? Itaque magni asperiores velit nisi sint sapiente ipsum necessitatibus nam?</p>
+            <h2></h2>
+            <p></p>
             <div>
                 <h3>Links</h3>
             </div>
@@ -82,6 +82,8 @@ class ProjectCardComponent extends HTMLElement{
         let shadow = this.attachShadow({mode: 'open'});
         shadow.appendChild(this.template.content.cloneNode(true));
         shadow.querySelector('.tech_list').innerHTML = this.innerHTML;
+        shadow.querySelector('.info_cont').querySelector('h2').innerHTML = this.getAttribute('name')
+        shadow.querySelector('.info_cont').querySelector('p').innerHTML = this.getAttribute('desc')
     }
 }
 window.customElements.define('project-card', ProjectCardComponent);

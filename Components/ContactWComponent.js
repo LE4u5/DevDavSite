@@ -15,6 +15,7 @@ const contact_style = `
     border-radius: 12px;
     padding: 2rem;
     overflow: hidden;
+    background-color: black;
 }
 h2{
     font-family: 'MyUnispace', sans-serif;

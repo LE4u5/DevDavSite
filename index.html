@@ -24,9 +24,9 @@
     </div>
     <div class="main_cont">
         <navbar->
-            <a href="#home"><p>Home</p></a>
-            <a href="#projects">Projects<p></p></a>
-            <a href="#contact"><p>Contact</p></a>
+            <a data-scroll href="#home"><p>Home</p></a>
+            <a data-scroll href="#projects">Projects<p></p></a>
+            <a data-scroll href="#contact"><p>Contact</p></a>
             <a class='download_link' href="./assets/files/resume.pdf"><p>Resume</p><i class="fas fa-file-download"></i></a>
         </navbar->
         <div class="home_cont" id="home">
@@ -78,6 +78,8 @@
         <p class="pg_ind contact_ind">Contact</p>
     </div>
     <script src="./index.js"></script>
+    <script src="./node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
     <script src="./Components/ProjectCardWComponent.js"></script>
     <script src="./Components/NavBarWComponent.js"></script>
     <script src="./Components/ContactWComponent.js"></script>
