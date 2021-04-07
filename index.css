@@ -1,12 +1,13 @@
+@font-face{
+    font-family: 'MyUnispace';
+    src: url('./assets/fonts/unispace\ bd.ttf') format('truetype');
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     color: white;    
-}
-@font-face{
-    font-family: 'MyUnispace';
-    src: url('./assets/fonts/unispace\ bd.ttf') format('truetype');
 }
 
 h1{
@@ -30,19 +31,20 @@ body{
     display: flex;
     justify-content: right;
     overflow: hidden;
-    padding-top: 20px;
-    padding-right: 50px;
     z-index: -1;
 }
+
 .bg_cont{
     position: fixed;
     top: 0;
     right: 0;
-    border-right: .12rem solid white;
-    margin-right: 2.5rem;
 }
 .bg_img{
-    height: 1125px;
+    position: absolute;
+    width: 110rem;
+    top: -200px;
+    left: 0px;
+    filter: grayscale();
 }
 .bg_cont_ol{
     position: absolute;
@@ -50,8 +52,15 @@ body{
     right: 0;
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(to right, black,rgba(1,1,1,.7));
+    background-image: linear-gradient(to right, black,rgba(1,1,1,.6));
     z-index: 1;
+}
+.side_bar{
+    position: fixed;
+    top: 0px;
+    right: 2.5rem;
+    border-right: 1px solid white;
+    height: 100vh;
 }
 .main_cont{
     position: absolute;
@@ -86,14 +95,21 @@ body{
     width: 8rem;
     border: 2px solid white;
     border-radius: 12px;
-    background-color: transparent;
+    transition: 600ms ease-in-out;
+}
+
+.main_projects_btn{
+    color: white;
+    background-color: #db6d00;
 }
 .main_contact_btn{
     color: #0baa84;
+    background-color: black;
 }
-.main_projects_btn{
-    color: white;
-    background-color: #db6d00 !important;
+button:hover{
+    background-color: white;
+    transition: 600ms ease-in-out;
+    color: #db6d00;
 }
 .projects_cont{
     min-height: 100vh;
@@ -181,4 +197,7 @@ navbar- i{
 }
 navbar- .download_link{
     margin-left: 8rem;
+}
+@media only screen and (max-width: 600px){
+    
 }

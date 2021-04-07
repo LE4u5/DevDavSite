@@ -3,10 +3,40 @@ const projectsElement = document.querySelector('.projects_cont');
 const homeblock = document.querySelector('.home_cont').getClientRects();
 const projectsList = document.querySelector(('.projects_ls'));
 const contactElement = document.querySelector('.contact_cont');
+const bgScrollRate = 5;
 
 const javascriptIcon = '<i class="fab fa-js-square fa-2x"></i>',
     htmlIcon = '<i class="fab fa-html5 fa-2x"></i>',
     reactIcon = '<i class="fab fa-react fa-2x"></i>';
+
+
+const tech = [javascriptIcon, htmlIcon, reactIcon];
+const projectsDataList = [
+    {
+        name:'name1',
+        desc:'description1',
+        img:'https://images.pexels.com/photos/3137038/pexels-photo-3137038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        ptech: ['js','html','react'],
+        links: {
+            github: 'http://www.github.com/LE4u5',
+            web: 'https://devdav.dev'
+        }
+    },
+    {
+        name:'name2', 
+        desc:'description2', 
+        img:'', 
+        ptech: ['js','html','react'],
+        links: {github: 'fgd'}
+    },
+    {
+        name:'name3', 
+        desc:'description3', 
+        img:'', 
+        ptech: ['js','html','react'],
+        links: {}
+}
+];
 
 function stringToIconElement(strArray){
     let newArray = strArray.map(item => {
@@ -22,27 +52,14 @@ function stringToIconElement(strArray){
     return newArray;
 }
 
-const tech = [javascriptIcon, htmlIcon, reactIcon];
-const projectsDataList = [
-    {
-        name:'name1',
-        desc:'description1',
-        img:'',
-        ptech: ['js','html','react']
-    },
-    {
-        name:'name2', 
-        desc:'description2', 
-        img:'', 
-        ptech: ['js','html','react']
-    },
-    {
-        name:'name3', 
-        desc:'description3', 
-        img:'', 
-        ptech: ['js','html','react']
+function CreateLinksElement(links){
+    let lElement = '';
+        if(links.github !== undefined)
+            lElement += `<a href='${links.github}'><i class='fab fa-github fa-lg'></i></a> `;
+        if(links.web !== undefined)
+            lElement += `<a href='${links.web}'><i class="fas fa-globe fa-lg"></i></a>`;
+    return lElement;
 }
-];
 function CreateTechList(iconArray, cardElement){
     
     stringToIconElement(iconArray).forEach( i => {
@@ -57,6 +74,9 @@ function CreateProjectsList(projects){
         card.classList.add('proj_card')
         card.setAttribute('name',proj.name)
         card.setAttribute('desc',proj.desc)
+        card.setAttribute('img',proj.img)
+        card.setAttribute('links', CreateLinksElement(proj.links))
+
         CreateTechList(proj.ptech, card);
     })
 }
@@ -125,4 +145,8 @@ document.addEventListener('scroll', ()=>{
     }
 
     console.log('Scroll Pos: ',window.scrollY)
+
+    document.querySelector('.bg_img').setAttribute('style',`transform: translateY(${((window.scrollY*100)/document.querySelector('.main_cont').getClientRects()[0].height)/bgScrollRate}%) !important;`)
 })
+
+console.log('Doc Rect: ',document.querySelector('.main_cont').getClientRects()[0].height)
