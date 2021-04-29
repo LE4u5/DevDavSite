@@ -10,7 +10,7 @@ const contact_style = `
     font-family: 'Montserat', sans-serif;
     font-size: .8rem;
     height: 400px;
-    width: 800px;
+    width: 100%;
     border: 2px solid white;
     border-radius: 12px;
     padding: 2rem;
@@ -37,8 +37,9 @@ input, textarea{
 #imsg{
     width: 100%;
     height: 125px;
-    max-width: 100%;
-    max-height: 125px;
+    width: 100%;
+    height: 125px;
+    padding: 8px;
 }
 .submit-btn{
     position: absolute;
@@ -52,6 +53,14 @@ label{
 }
 .submit-btn:hover{
     cursor: pointer;
+}
+
+@media only screen and (min-width: 700px){
+.contact_cont{
+    width: 800px;
+}
+
+
 }
 </style>
 <div class='contact_cont'>

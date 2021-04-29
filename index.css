@@ -2,92 +2,29 @@
     font-family: 'MyUnispace';
     src: url('./assets/fonts/unispace\ bd.ttf') format('truetype');
 }
-
+h1{
+    font-family: 'MyUnispace', sans-serif;
+}
+p{
+    font-family: 'Montserat', sans-serif;
+    text-decoration: none;
+}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     color: white;    
 }
-
-h1{
-    font-family: 'MyUnispace', sans-serif;
-    font-size: 3rem;
-    color: white;
+body{
+    position: relative;
+    background-color: black;
+}
+html, body{
+    overflow-x: hidden;
 }
 button:hover{
     cursor: pointer;
 }
-body{
-    position: relative;
-    overflow-x: hidden;
-    background-color: black;
-}
-.img_cont{
-    position: relative;
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: right;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.bg_cont{
-    position: fixed;
-    top: 0;
-    right: 0;
-}
-.bg_img{
-    position: absolute;
-    width: 110rem;
-    top: -200px;
-    left: 0px;
-    filter: grayscale();
-}
-.bg_cont_ol{
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(to right, black,rgba(1,1,1,.6));
-    z-index: 1;
-}
-.side_bar{
-    position: fixed;
-    top: 0px;
-    right: 2.5rem;
-    border-right: 1px solid white;
-    height: 100vh;
-}
-.main_cont{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    min-height: 100vh;
-}
-.home_cont{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-}
-.main_text_cont{
-    margin-left: 200px;
-}
-.main_text_cont h1{
-    margin-top: .7rem;
-}
-.main_text_cont p{
-    font-family: 'Montserat', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: .1rem;
-    color: #db6d00;
-}
-
 .main_text_cont button{
     margin-top: 4rem;
     margin-right: 2rem;
@@ -97,7 +34,11 @@ body{
     border-radius: 12px;
     transition: 600ms ease-in-out;
 }
-
+.main_btn_cont{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
 .main_projects_btn{
     color: white;
     background-color: #db6d00;
@@ -106,16 +47,55 @@ body{
     color: #0baa84;
     background-color: black;
 }
-button:hover{
-    background-color: white;
-    transition: 600ms ease-in-out;
+.bg_cont{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+.img_cont{
+    position: relative;
+    height: 90vh;
+    width: 100vw;
+}
+.bg_img{
+    position: absolute;
+    filter: grayscale();
+    width: 200vh;
+    top: -200px;
+    left: -600px;
+}
+.main_cont{
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+}
+.main_text_cont{
+    padding: 1rem 20px;
+}
+.main_text_cont p{
     color: #db6d00;
+}
+.bg_cont_ol{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right, rgba(1,1,1,.9),rgba(1,1,1,.5));
+    z-index: 1;
+}
+.home_cont{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
 }
 .projects_cont{
     min-height: 100vh;
     width: 100vw;
-    padding-left: 200px;
-    padding-top: 100px;
+    padding: 0px 20px;
     margin-top: 100px;
 }
 .skills_list_cont{
@@ -144,8 +124,9 @@ button:hover{
 .projects_ls{
     margin-top: 3rem;
 }
+
 .contact_cont{
-    padding-left: 200px;
+    padding: 0px 20px;
     margin-top: 100px;
     padding-top: 100px;
     width: 100vw;
@@ -164,40 +145,152 @@ button:hover{
     margin-bottom: 3rem;
 }
 .pg_ind{
+    color: white;
     position: fixed;
     bottom: 80px;
     transform: rotate(-90deg);
     font-family: 'Montserat', sans-serif;
     font-weight: 100;
     letter-spacing: 6px;
-    font-size: 1.5rem;
+    font-size: .8rem;
     width: 60px;
     margin: 0;
     padding: 0;
-    right: 32px;
+    right: -20px;
     transition: 500ms ease-in-out; bottom: -200px;
 }
 
 .pg_ind.active{
-    right: 32px !important;
-    bottom: 60px;
+    right: -20px !important;
+    bottom: 50px;
     transition: 500ms ease-in-out;
 }
 
-navbar- a{
-    font-family: 'Montserat', sans-serif;
-    font-size: .9rem;
-    color: white;
-    text-decoration: none;
-    margin-right: 3rem;
-    display: flex;
-}
-navbar- i{
-    margin-left: .5rem;
-}
-navbar- .download_link{
-    margin-left: 8rem;
-}
-@media only screen and (max-width: 600px){
+@media only screen and (min-width: 700px){ 
+    html, body{
+        overflow-x: initial;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    h1{
+        font-family: 'MyUnispace', sans-serif;
+        font-size: 3rem;
+        color: white;
+    }    
+    .img_cont{
+        position: relative;
+        background-color: black;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: right;
+        overflow: hidden;
+        z-index: -1;
+    }
+
     
+    .bg_img{
+        position: absolute;
+        filter: grayscale();
+        width: 120rem;
+        top: -200px;
+        left: 0px;
+    }
+    .bg_cont_ol{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        background-image: linear-gradient(to right, black,rgba(1,1,1,.6));
+        z-index: 1;
+    }
+    .side_bar{
+        position: fixed;
+        top: 0px;
+        right: 2.5rem;
+        border-right: 1px solid white;
+        height: 100vh;
+    }
+    .main_cont{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        min-height: 100vh;
+    }
+    .home_cont{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+    }
+    .main_text_cont{
+        margin-left: 200px;
+    }
+    .main_text_cont h1{
+        margin-top: .7rem;
+    }
+    .main_text_cont p{
+        font-family: 'Montserat', sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: .1rem;
+        color: #db6d00;
+    }
+    .main_btn_cont{
+        display: block;
+    }
+    
+    button:hover{
+        background-color: white;
+        transition: 600ms ease-in-out;
+        color: #db6d00;
+    }
+    .projects_cont{
+        padding-left: 200px;
+        padding-top: 100px;
+        margin-top: 100px;
+    }
+    
+    .contact_cont{
+        padding-left: 200px;
+    }
+    
+    .pg_ind{
+        color: white;
+        position: fixed;
+        bottom: 80px;
+        transform: rotate(-90deg);
+        font-family: 'Montserat', sans-serif;
+        font-weight: 100;
+        letter-spacing: 6px;
+        font-size: 1.5rem;
+        width: 60px;
+        margin: 0;
+        padding: 0;
+        right: 32px;
+        transition: 500ms ease-in-out; bottom: -200px;
+    }
+
+    .pg_ind.active{
+        right: 32px !important;
+        bottom: 60px;
+        transition: 500ms ease-in-out;
+    }
+
+    navbar- a{
+        font-family: 'Montserat', sans-serif;
+        font-size: .9rem;
+        color: white;
+        text-decoration: none;
+        margin-right: 3rem;
+        display: flex;
+    }
+    navbar- i{
+        margin-left: .5rem;
+    }
+    navbar- .download_link{
+        margin-left: 8rem;
+    }
 }

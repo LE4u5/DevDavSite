@@ -17,7 +17,7 @@ const nav_style = `
     color: white;
     
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
 }
 
