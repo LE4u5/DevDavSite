@@ -7,7 +7,6 @@ const proj_style = `
 }
 .proj_card_cont{
     height: calc((100vw - 88px) + 60px);
-    width: 100;
     border: 2px solid white;
     border-radius: .8rem;
     padding: 24px;
@@ -19,7 +18,6 @@ const proj_style = `
     height: 700px !important;
 }
 .proj_card_cont .img_cont{
-    width: 100;
     height: calc( 100vw - 88px);
     background-color: white;
     border-radius: .7rem;
@@ -27,10 +25,6 @@ const proj_style = `
     margin-bottom: 24px;
 }
 
-.info_cont{
-    
-    width: 100;
-}
 h2{
     font-family: 'MyUnispace', sans-serif;
     color: white;
@@ -111,31 +105,67 @@ p{
     </div>
 </div>
 `;
-class ProjectCardComponent extends HTMLElement{
-    constructor(){
-        super()
+class ProjectCardComponent extends HTMLElement {
+    // constructor(){
+    //     super()
+    //     this.template = document.createElement('template');
+    //     this.template.innerHTML = proj_style;
+    //     let touched = false;
+    //     let shadow = this.attachShadow({mode: 'open'});
+    //     shadow.appendChild(this.template.content.cloneNode(true));
+    //     shadow.querySelector('.tech_list').innerHTML = this.innerHTML;
+    //     // shadow.querySelector('.info_cont').querySelector('h2').innerHTML = this.getAttribute('name');
+    //     // shadow.querySelector('.info_cont').querySelector('p').innerHTML = this.getAttribute('desc');
+    //     // shadow.querySelector('.links_cont').querySelector('div').innerHTML = this.getAttribute('links');
+    //     // shadow.querySelector('.img_cont').innerHTML = `<img src='${this.getAttribute('img')}' ></img>`;
+    //     {
+    //         console.log(this)
+    //         console.log(this.getAttribute('desc'))
+    //         console.log(this.getAttributeNames())
+    //     }
+
+    // }
+    constructor() {
+        super();
         this.template = document.createElement('template');
         this.template.innerHTML = proj_style;
-        let touched = false;
-        let shadow = this.attachShadow({mode: 'open'});
-        shadow.appendChild(this.template.content.cloneNode(true));
-        shadow.querySelector('.tech_list').innerHTML = this.innerHTML;
-        shadow.querySelector('.info_cont').querySelector('h2').innerHTML = this.getAttribute('name');
-        shadow.querySelector('.info_cont').querySelector('p').innerHTML = this.getAttribute('desc');
-        shadow.querySelector('.links_cont').querySelector('div').innerHTML = this.getAttribute('links');
-        shadow.querySelector('.img_cont').innerHTML = `<img src='${this.getAttribute('img')}' ></img>`;
-        shadow.querySelector('.proj_card_cont').addEventListener('touchstart',()=>{
-            if(!touched){
-                shadow.querySelector('.proj_card_cont').classList.add('active');
-                touched = !touched;
-                console.log('Clicked f', touched)
-            }            
-            else if(touched){
-                shadow.querySelector('.proj_card_cont').classList.remove('active');
-                touched = !touched;
-                console.log('Clicked t', touched)
-            }
-        })
+        this.shadow = this.attachShadow({ mode: 'open' });
+        this.touched = false;
+    }
+    render() {
+        if (this.shadow.querySelector('.tech_list'))
+            this.shadow.querySelector('.tech_list').innerHTML = this.innerHTML;
+        if (this.shadow.querySelector('.info_cont'))
+            this.shadow.querySelector('.info_cont').querySelector('h2').innerHTML = this.getAttribute('name');
+        if (this.shadow.querySelector('.info_cont'))
+            this.shadow.querySelector('.info_cont').querySelector('p').innerHTML = this.getAttribute('desc');
+        if (this.shadow.querySelector('.links_cont'))
+            this.shadow.querySelector('.links_cont').querySelector('div').innerHTML = this.getAttribute('links');
+        if (this.shadow.querySelector('.img_cont'))
+            this.shadow.querySelector('.img_cont').innerHTML = `<img src='${this.getAttribute('img')}' ></img>`;
+
+        if (this.shadow.querySelector('.proj_card_cont')) {
+            this.shadow.querySelector('.proj_card_cont').addEventListener('touchend', () => {
+                if (!this.touched) {
+                    this.shadow.querySelector('.proj_card_cont').classList.add('active');
+                    this.touched = !this.touched;
+                }
+                else if (this.touched) {
+                    this.shadow.querySelector('.proj_card_cont').classList.remove('active');
+                    this.touched = !this.touched;
+                }
+            })
+        }
+    }
+    static get observedAttributes() {
+        return ['name', 'desc', 'links', 'img'];
+    }
+    connectedCallback() {
+        this.shadow.appendChild(this.template.content.cloneNode(true));
+        this.render();
+    }
+    attributeChangedCallback() {
+        this.render();
     }
 }
 window.customElements.define('project-card', ProjectCardComponent);

@@ -65,24 +65,73 @@ label{
 </style>
 <div class='contact_cont'>
     <h2>Leave a Message</h2>
-    <form action='http://localhost:1986/' method='post'>
+    <form>
         <label for='iname'><p>Name</p></label>
-        <input id='iname' name='iname' ></input>
+        <input type='text' id='iname' name="iname" ></input>
         <label for='iemail' ><p>Email</p></label>
-        <input name='iemail' id='iemail' ></input>
+        <input type='text' name='iemail' id='iemail' ></input>
         <label for='imsg'><p>Message</p></label>
         <textarea id='imsg' name='imsg' ></textarea>
-        <input class='submit-btn' type='submit' value='Submit'/>
+        <input class='submit-btn' type='button' value='Submit'/>
     </form>
 </div>
 `
-class ContactComponent extends HTMLElement{
-    constructor(){
+class ContactComponent extends HTMLElement {
+    constructor() {
         super();
         this.template = document.createElement('template');
         this.template.innerHTML = contact_style;
-        let shadow = this.attachShadow({mode:'open'});
-        shadow.appendChild(this.template.content.cloneNode(true));
+        this.shadow = this.attachShadow({ mode: 'open' });
+        this.formDataMsg = {
+            VALID_FORM: 'valid form',
+            INVALID_EMAIL: 'Email entered is not a valid email',
+            EMPTY_FIELDS: 'A text field was left empty'
+        }
+    }
+    render() {
+    }
+    async sendFormData() {
+        
+        const formData = {
+            iname: this.shadow.getElementById('iname').value,
+            iemail: this.shadow.getElementById('iemail').value,
+            imsg: this.shadow.getElementById('imsg').value
+        }
+        const validation = this.validateForm(formData);
+        console.log(validation);
+        if (validation === this.formDataMsg.VALID_FORM) {
+            console.log('sending data');
+            try {
+                const response = await fetch('https:api.devdav.dev/contact/message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                const data = await response.json();
+            } catch (err) {
+
+            }
+        }
+    }
+    validateForm({ iname, iemail, imsg }) {
+        const emailRegexp = /\w+@{1}\w+[.]\w+/;
+        if (iname && iemail && imsg) {
+            if (!iemail.match(emailRegexp)) {
+                return this.formDataMsg.INVALID_EMAIL;
+            }
+            return this.formDataMsg.VALID_FORM;
+        }
+        return this.formDataMsg.EMPTY_FIELDS;
+    }
+    connectedCallback() {
+        this.shadow.appendChild(this.template.content.cloneNode(true));
+        this.shadow.querySelector('.submit-btn').addEventListener('click', () => { this.sendFormData() });
+        this.render();
+    }
+    attributeChangedCallback() {
+        this.render();
     }
 }
 window.customElements.define('contact-', ContactComponent);

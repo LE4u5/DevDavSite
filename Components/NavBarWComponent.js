@@ -20,10 +20,40 @@ const nav_style = `
     justify-content: flex-end;
     align-items: center;
 }
-
+.navbar_cont.active{
+    height: 16rem;
+    background-color: black;
+}
+.nav_content{
+    display: none;
+}
+.navbar_cont.active{
+    
+}
+.navbar_cont.active .nav_content{
+    position: absolute;
+    display: block;
+    top: 40px;
+    left: 40px;
+    text-decoration: none;
+}
+.fa-bars{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+@media only screen and (min-width: 700px){
+.fa-bars{
+    display: none;
+}
+.nav_content{
+    display: flex;
+}
+}
 </style>
 <div class='navbar_cont'>
     <slot class='nav_content'></slot>
+    <div class='bars'><i class="fas fa-bars fa-lg"></i></div>
 </div>
 `
 class NavBarComponent extends HTMLElement{
@@ -31,10 +61,30 @@ class NavBarComponent extends HTMLElement{
         super();
         this.template = document.createElement('template');
         this.template.innerHTML = nav_style;
-
-        let shadow = this.attachShadow({mode: 'open'});
-        shadow.appendChild(this.template.content.cloneNode(true));
-        shadow.querySelector('.nav_content').innerHTML = this.innerHTML;
+        this.shadow = this.attachShadow({mode: 'open'});
+        this.navElement;
+        this.touched = false;
+    }
+    render(){
+        this.shadow.querySelector('.nav_content').innerHTML = this.innerHTML;
+    }
+    connectedCallback(){
+        this.shadow.appendChild(this.template.content.cloneNode(true));
+        this.render();
+        this.navElement = this.shadow.querySelector('.navbar_cont');
+        this.shadow.querySelector('.fa-bars').addEventListener('touchend', ()=>{
+            if(!this.touched) {
+                this.shadow.querySelector('.navbar_cont').classList.add('active');
+                this.touched = !this.touched;
+            }else
+            if(this.touched) {
+                this.navElement.classList.remove('active');
+                this.touched = !this.touched;
+            }
+        })
+    }
+    attributeChangedCallback(){
+        this.render();
     }
 }
 window.customElements.define('navbar-', NavBarComponent);

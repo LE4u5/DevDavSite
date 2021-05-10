@@ -166,7 +166,22 @@ button:hover{
     transition: 500ms ease-in-out;
 }
 
-@media only screen and (min-width: 700px){ 
+navbar- a{
+    font-family: 'Montserat', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    margin-right: 3rem;
+    display: flex;
+}
+navbar- i{
+    margin-left: .5rem;
+}
+navbar- .download_link{
+    margin-top: 2rem;
+}
+
+@media only screen and (min-width: 500px){ 
     html, body{
         overflow-x: initial;
     }
@@ -278,19 +293,12 @@ button:hover{
         bottom: 60px;
         transition: 500ms ease-in-out;
     }
-
     navbar- a{
-        font-family: 'Montserat', sans-serif;
         font-size: .9rem;
-        color: white;
-        text-decoration: none;
-        margin-right: 3rem;
-        display: flex;
-    }
-    navbar- i{
-        margin-left: .5rem;
     }
     navbar- .download_link{
         margin-left: 8rem;
+        margin-top: 0;
     }
+    
 }

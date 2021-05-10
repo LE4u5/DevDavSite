@@ -1,79 +1,23 @@
+//##### Constant Variables + Session Storage #####
 const homeElement = document.querySelector('.home_cont');
 const projectsElement = document.querySelector('.projects_cont');
 const homeblock = document.querySelector('.home_cont').getClientRects();
-const projectsList = document.querySelector(('.projects_ls'));
+const projectsListElement = document.querySelector(('.projects_ls'));
 const contactElement = document.querySelector('.contact_cont');
 const bgScrollRate = 5;
 
 const javascriptIcon = '<i class="fab fa-js-square fa-2x"></i>',
-htmlIcon = '<i class="fab fa-html5 fa-2x"></i>',
-reactIcon = '<i class="fab fa-react fa-2x"></i>';
-
-const sStorage = window.sessionStorage;
+    htmlIcon = '<i class="fab fa-html5 fa-2x"></i>',
+    reactIcon = '<i class="fab fa-react fa-2x"></i>';
 const tech = [javascriptIcon, htmlIcon, reactIcon];
 
-function CreateProjectsList(projects) {
-    projects.forEach(proj => {
-        let card = document.createElement('project-card');
-        projectsList.appendChild(card);
-        card.classList.add('proj_card')
-        card.setAttribute('name', proj.name)
-        card.setAttribute('desc', proj.desc)
-        card.setAttribute('img', proj.img)
-        card.setAttribute('links', CreateLinksElement(proj.links ? proj.links : {}))
+const sStorage = window.sessionStorage;
+sStorage.setItem('homeFocus', 'true');
+sStorage.setItem('projectsFocus', 'false');
+sStorage.setItem('contactFocus', 'false');
+//##################################################
 
-        CreateTechList(proj.ptech, card);
-    })
-}
-
-async function getProjectList() {
-    let list;
-    try {
-        const response = await fetch('http://localhost:443/projects/list', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        list = await response.json();
-        console.log(list);
-        sStorage.setItem('projList',JSON.stringify(list));
-    }
-    catch (err) {
-        console.log('failed to get projects data.')
-        return;
-    }
-    console.log('List: ', list);
-    
-}
-
-const projectsDataList = [
-    {
-        name: 'name1',
-        desc: 'description1',
-        img: 'https://images.pexels.com/photos/3137038/pexels-photo-3137038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        ptech: ['js', 'html', 'react'],
-        links: {
-            github: 'http://www.github.com/LE4u5',
-            web: 'https://devdav.dev'
-        }
-    },
-    {
-        name: 'name2',
-        desc: 'description2',
-        img: '',
-        ptech: ['js', 'html', 'react'],
-        links: { github: 'fgd' }
-    },
-    {
-        name: 'name3',
-        desc: 'description3',
-        img: '',
-        ptech: ['js', 'html', 'react'],
-        links: {}
-    }
-];
-
+//##### Functions #####
 function stringToIconElement(strArray) {
     let newArray = strArray.map(item => {
         if (item === 'js')
@@ -87,7 +31,12 @@ function stringToIconElement(strArray) {
     })
     return newArray;
 }
+function CreateTechList(iconArray, cardElement) {
 
+    stringToIconElement(iconArray).forEach(i => {
+        cardElement.innerHTML += i;
+    })
+}
 function CreateLinksElement(links) {
     let lElement = '';
     if (links.github !== undefined)
@@ -96,13 +45,35 @@ function CreateLinksElement(links) {
         lElement += `<a href='${links.web}'><i class="fas fa-globe fa-lg"></i></a>`;
     return lElement;
 }
-function CreateTechList(iconArray, cardElement) {
 
-    stringToIconElement(iconArray).forEach(i => {
-        cardElement.innerHTML += i;
-    })
+async function getProjectList() {
+    let list;
+        const response = await fetch('https://api.devdav.dev/projects/list', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+         list = await response.json();
+         return list;
 }
 
+function CreateProjectsListElement(newList) {
+    if (newList) {
+        newList.forEach(proj => {
+            const card = document.createElement('project-card');
+            card.classList.add('proj_card')
+            card.setAttribute('name', proj.name)
+            card.setAttribute('desc', proj.desc)
+            card.setAttribute('img', proj.img)
+            card.setAttribute('key', proj._id)
+            card.setAttribute('links', CreateLinksElement(proj.links ? proj.links : {}))
+            CreateTechList(proj.ptech, card);
+            projectsListElement.appendChild(card);
+        })
+        
+    }
+}
 //Returns true if element is in viewport
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -120,15 +91,14 @@ function stb(stringBool) {
     else
         return false;
 }
+//#######################
 
-getProjectList();
-const projectsL = JSON.parse(sStorage.projList);
-console.log('SS: ', JSON.parse(sStorage.projList))
-console.log('Passed: ',projectsL)
-CreateProjectsList(projectsL)
-sStorage.setItem('homeFocus', 'true');
-sStorage.setItem('projectsFocus', 'false');
-sStorage.setItem('contactFocus', 'false');
+//#####
+getProjectList()
+    .then(list => {CreateProjectsListElement(list)})
+    .catch(err => {
+        console.log("Failed Fetch:", err);
+    });
 
 //Sets State of Page Position Indicator
 document.addEventListener('scroll', () => {
@@ -167,10 +137,9 @@ document.addEventListener('scroll', () => {
         document.querySelector('.contact_ind').classList.add('active');
         sStorage.setItem('contactFocus', 'true')
     }
-
-    console.log('Scroll Pos: ', window.scrollY)
-
     document.querySelector('.bg_img').setAttribute('style', `transform: translateY(${((window.scrollY * 100) / document.querySelector('.main_cont').getClientRects()[0].height) / bgScrollRate}%) !important;`)
 })
 
-console.log('Doc Rect: ', document.querySelector('.main_cont').getClientRects()[0].height)
+
+//console.log('Doc Rect: ', document.querySelector('.main_cont').getClientRects()[0].height)
+//##########
