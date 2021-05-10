@@ -20,7 +20,7 @@ const contact_style = `
 h2{
     font-family: 'MyUnispace', sans-serif;
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 input, textarea{
     border: 1px solid white;
@@ -54,7 +54,10 @@ label{
 .submit-btn:hover{
     cursor: pointer;
 }
-
+.err_msg{
+    color:red;
+    margin-bottom:.5rem;
+}
 @media only screen and (min-width: 700px){
 .contact_cont{
     width: 800px;
@@ -65,6 +68,7 @@ label{
 </style>
 <div class='contact_cont'>
     <h2>Leave a Message</h2>
+    <p class='err_msg' style="opacity: 0;" >'</p>
     <form>
         <label for='iname'><p>Name</p></label>
         <input type='text' id='iname' name="iname" ></input>
@@ -111,9 +115,13 @@ class ContactComponent extends HTMLElement {
                 })
                 const data = await response.json();
             } catch (err) {
-
+                console.log(err);
             }
+            this.shadow.querySelector('.err_msg').setAttribute('style','opacity: 0;')
+            return
         }
+        this.shadow.querySelector('.err_msg').innerHTML = validation;
+        this.shadow.querySelector('.err_msg').setAttribute('style','opacity: 1;')
     }
     validateForm({ iname, iemail, imsg }) {
         const emailRegexp = /\w+@{1}\w+[.]\w+/;
