@@ -106,7 +106,7 @@ class ContactComponent extends HTMLElement {
         if (validation === this.formDataMsg.VALID_FORM) {
             console.log('sending data');
             try {
-                const response = await fetch('https:api.devdav.dev/contact/message', {
+                const response = await fetch('https://api.devdav.dev/contact/message', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
