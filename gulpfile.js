@@ -36,7 +36,7 @@ function copyAssets() {
         .pipe(gulp.dest('dist/assets'));
 }
 function copyDockerFile(){
-    return gulp.src('Dockerfile')
+    return gulp.src(['Dockerfile','one.bash'])
         .pipe(gulp.dest('dist'));
 }
 

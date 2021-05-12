@@ -86,6 +86,7 @@ class ContactComponent extends HTMLElement {
         this.template = document.createElement('template');
         this.template.innerHTML = contact_style;
         this.shadow = this.attachShadow({ mode: 'open' });
+        this.submitEvent;
         this.formDataMsg = {
             VALID_FORM: 'valid form',
             INVALID_EMAIL: 'Email entered is not a valid email',
@@ -118,6 +119,9 @@ class ContactComponent extends HTMLElement {
                 console.log(err);
             }
             this.shadow.querySelector('.err_msg').setAttribute('style','opacity: 0;')
+            this.shadow.querySelector('.submit-btn').setAttribute('value','Sent!')
+            this.shadow.querySelector('.submit-btn').setAttribute('style','color: #db6d00;')
+            this.shadow.querySelector('.submit-btn').removeEventListener('click',this.submitEvent);
             return
         }
         this.shadow.querySelector('.err_msg').innerHTML = validation;
@@ -134,8 +138,9 @@ class ContactComponent extends HTMLElement {
         return this.formDataMsg.EMPTY_FIELDS;
     }
     connectedCallback() {
+        this.submitEvent = () => { this.sendFormData() }
         this.shadow.appendChild(this.template.content.cloneNode(true));
-        this.shadow.querySelector('.submit-btn').addEventListener('click', () => { this.sendFormData() });
+        this.shadow.querySelector('.submit-btn').addEventListener('click', this.submitEvent );
         this.render();
     }
     attributeChangedCallback() {
