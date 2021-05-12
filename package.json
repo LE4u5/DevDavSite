@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "smooth-scroll": "^16.1.3",
-    "usemin-cli": "^0.6.0"
+    "usemin-cli": "^0.6.0",
+    "lodash.template": ">=4.5.0",
+    "yargs-parser": ">=5.0.0-security.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
