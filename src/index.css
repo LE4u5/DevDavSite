@@ -129,12 +129,14 @@ button:hover{
     margin-top: 3rem;
 }
 .ow_list{
+    display: flex;
     margin-top: 1rem;
     font-family: 'Montserat', sans-serif;
 }
 .ow_list a{
     color: var(--primary-color);
     text-decoration: none;
+    margin-left: .2rem;
 }
 
 .contact_cont{
