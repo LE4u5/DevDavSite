@@ -2,6 +2,10 @@
     font-family: 'MyUnispace';
     src: url('./assets/fonts/unispace\ bd.ttf') format('truetype');
 }
+:root {
+    --primary-color: #db6d00;
+    --secondary-color: #0baa84
+}
 h1{
     font-family: 'MyUnispace', sans-serif;
 }
@@ -41,7 +45,7 @@ button:hover{
 }
 .main_projects_btn{
     color: white;
-    background-color: #db6d00;
+    background-color: var(--primary-color);
 }
 .main_contact_btn{
     color: #0baa84;
@@ -75,7 +79,7 @@ button:hover{
     padding: 1rem 20px;
 }
 .main_text_cont p{
-    color: #db6d00;
+    color: var(--primary-color);
 }
 .bg_cont_ol{
     position: absolute;
@@ -105,7 +109,7 @@ button:hover{
     font-family: 'Montserat', sans-serif;
     font-size: 1.2rem;
     letter-spacing: .1rem;
-    color: #db6d00;
+    color: var(--primary-color);
 }
 .skills_list_cont{
     margin-top: 3rem;
@@ -124,6 +128,14 @@ button:hover{
 .projects_ls{
     margin-top: 3rem;
 }
+.ow_list{
+    margin-top: 1rem;
+    font-family: 'Montserat', sans-serif;
+}
+.ow_list a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
 
 .contact_cont{
     padding: 0px 20px;
@@ -136,7 +148,7 @@ button:hover{
     margin-bottom: 4rem;
 }
 .links_cont a{
-    color:#db6d00;
+    color:var(--primary-color);
 }
 .links_cont p{
     margin: 10px 0;
@@ -251,7 +263,7 @@ navbar- .download_link{
         font-family: 'Montserat', sans-serif;
         font-size: 1.2rem;
         letter-spacing: .1rem;
-        color: #db6d00;
+        color: var(--primary-color);
     }
     .main_btn_cont{
         display: block;
@@ -260,7 +272,7 @@ navbar- .download_link{
     button:hover{
         background-color: white;
         transition: 600ms ease-in-out;
-        color: #db6d00;
+        color: var(--primary-color);
     }
     .projects_cont{
         padding-left: 200px;

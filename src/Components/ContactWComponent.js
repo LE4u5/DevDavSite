@@ -46,10 +46,10 @@ input, textarea{
     right: 50px;
     bottom: 50px;
     padding: 5px 20px;
-    color: #0baa84;
+    color: var(--secondary-color);
 }
 label{
-    color: #db6d00;
+    var(--primary-color);
 }
 .submit-btn:hover{
     cursor: pointer;

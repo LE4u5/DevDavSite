@@ -40,7 +40,7 @@ h3{
 }
 p{
     font-family: 'Montserat', sans-serif;
-    color: #db6d00;
+    color: var(--primary-color);
     font-size: 1.2rem;
 }
 
@@ -49,7 +49,7 @@ p{
 }
 .tech_list{
     display: flex;
-    color: #0baa84;
+    color: var(--secondary-color);
 }
 .tech_list i{
     margin-top: 1.2rem;
@@ -59,10 +59,10 @@ p{
     color: white;
     margin-left: .8rem;
     margin-top: 1rem;
-    color: #0baa84;
+    color: var(--secondary-color);
 }
 .img_cont img{
-    width: 100%;
+    height: 100%;
 }
 @media only screen and (min-width: 700px){
 .proj_card_cont{
@@ -106,25 +106,6 @@ p{
 </div>
 `;
 class ProjectCardComponent extends HTMLElement {
-    // constructor(){
-    //     super()
-    //     this.template = document.createElement('template');
-    //     this.template.innerHTML = proj_style;
-    //     let touched = false;
-    //     let shadow = this.attachShadow({mode: 'open'});
-    //     shadow.appendChild(this.template.content.cloneNode(true));
-    //     shadow.querySelector('.tech_list').innerHTML = this.innerHTML;
-    //     // shadow.querySelector('.info_cont').querySelector('h2').innerHTML = this.getAttribute('name');
-    //     // shadow.querySelector('.info_cont').querySelector('p').innerHTML = this.getAttribute('desc');
-    //     // shadow.querySelector('.links_cont').querySelector('div').innerHTML = this.getAttribute('links');
-    //     // shadow.querySelector('.img_cont').innerHTML = `<img src='${this.getAttribute('img')}' ></img>`;
-    //     {
-    //         console.log(this)
-    //         console.log(this.getAttribute('desc'))
-    //         console.log(this.getAttributeNames())
-    //     }
-
-    // }
     constructor() {
         super();
         this.template = document.createElement('template');
