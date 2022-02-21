@@ -55,6 +55,10 @@ p{
     margin-top: 1.2rem;
     margin-right: 1rem;
 }
+.tech_list svg{
+    margin-top: 1.2rem;
+    margin-right: 1rem;
+}
 .links_cont i{
     color: white;
     margin-left: .8rem;

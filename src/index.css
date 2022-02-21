@@ -129,13 +129,20 @@ button:hover{
     margin-top: 3rem;
 }
 .ow_list{
+    margin-top: 2rem;
+}
+.ow_list_item{
     display: flex;
+    align-items: center;
     margin-top: 1rem;
     font-family: 'Montserat', sans-serif;
 }
-.ow_list a{
+.ow_list_item a{
     color: var(--primary-color);
     text-decoration: none;
+    margin-left: .2rem;
+}
+.ow_list_item p{
     margin-left: .2rem;
 }
 
