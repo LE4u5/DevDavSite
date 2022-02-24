@@ -6,16 +6,13 @@ const proj_style = `
     margin: 0;
 }
 .proj_card_cont{
-    height: calc((100vw - 88px) + 60px);
+    height: auto;
     border: 2px solid white;
     border-radius: .8rem;
     padding: 24px;
     background-color: black;
     margin-bottom: 3rem;
     overflow: hidden;
-}
-.proj_card_cont.active{
-    height: 700px !important;
 }
 .proj_card_cont .img_cont{
     height: calc( 100vw - 88px);
@@ -71,7 +68,7 @@ p{
 @media only screen and (min-width: 700px){
 .proj_card_cont{
     width: 750px;
-    height: 300px
+    height: 300px;
 }
 
 .proj_card_cont .img_cont{
@@ -129,18 +126,18 @@ class ProjectCardComponent extends HTMLElement {
         if (this.shadow.querySelector('.img_cont'))
             this.shadow.querySelector('.img_cont').innerHTML = `<img src='${this.getAttribute('img')}' ></img>`;
 
-        if (this.shadow.querySelector('.proj_card_cont')) {
-            this.shadow.querySelector('.proj_card_cont').addEventListener('touchend', () => {
-                if (!this.touched) {
-                    this.shadow.querySelector('.proj_card_cont').classList.add('active');
-                    this.touched = !this.touched;
-                }
-                else if (this.touched) {
-                    this.shadow.querySelector('.proj_card_cont').classList.remove('active');
-                    this.touched = !this.touched;
-                }
-            })
-        }
+        // if (this.shadow.querySelector('.proj_card_cont')) {
+        //     this.shadow.querySelector('.proj_card_cont').addEventListener('touchstart', () => {
+        //         if (!this.touched) {
+        //             this.shadow.querySelector('.proj_card_cont').classList.add('active');
+        //             this.touched = !this.touched;
+        //         }
+        //         else if (this.touched) {
+        //             this.shadow.querySelector('.proj_card_cont').classList.remove('active');
+        //             this.touched = !this.touched;
+        //         }
+        //     })
+        // }
     }
     static get observedAttributes() {
         return ['name', 'desc', 'links', 'img'];

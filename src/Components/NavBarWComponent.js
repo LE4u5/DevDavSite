@@ -27,9 +27,6 @@ const nav_style = `
 .nav_content{
     display: none;
 }
-.navbar_cont.active{
-    
-}
 .navbar_cont.active .nav_content{
     position: absolute;
     display: block;
